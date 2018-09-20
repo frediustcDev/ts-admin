@@ -1,29 +1,23 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { rnSquare, rnSetPosition } from "./src/components/utils";
-import ici from "rn-style-utils";
-export default class App extends React.Component {
+import React, { Component } from "react";
+import { Font } from "expo";
+import LoadingScreen from "./src/components/LoadingScreen";
+import Routes from "./src/routes/";
+
+export default class App extends Component {
+  state = {
+    isReady: false
+  };
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+    });
+
+    this.setState({ isReady: true });
+  }
+
   render() {
-    console.log(ici);
-    return (
-      <View style={styles.container}>
-        <View style={styles.box} />
-        <View style={styles.box} />
-      </View>
-    );
+    return this.state.isReady ? <Routes /> : <LoadingScreen />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    flexDirection: "row",
-    ...rnSetPosition(null, null)
-  },
-  box: {
-    backgroundColor: "red",
-    margin: 10,
-    ...rnSquare(100)
-  }
-});
