@@ -3,8 +3,8 @@ import auth from "./auth";
 import privateRoute from "./privateRoute";
 
 const route = createSwitchNavigator({
-  auth,
-  privateRoute
+  app: privateRoute,
+  auth
 });
 
 export default route;

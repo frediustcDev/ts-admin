@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Font } from "expo";
 import LoadingScreen from "./src/components/LoadingScreen";
 import Routes from "./src/routes/";
+import { fonts } from "./src/tools";
 
 export default class App extends Component {
   state = {
@@ -10,8 +11,7 @@ export default class App extends Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+      ...fonts
     });
 
     this.setState({ isReady: true });

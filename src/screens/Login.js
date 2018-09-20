@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-import { View, Text } from "native-base";
+import { View, Text, Button } from "native-base";
 
 class Login extends Component {
   state = {};
@@ -11,6 +11,9 @@ class Login extends Component {
     return (
       <View>
         <Text> Login </Text>
+        <Button onPress={() => this.props.navigation.navigate("app")}>
+          <Text>Login</Text>
+        </Button>
       </View>
     );
   }

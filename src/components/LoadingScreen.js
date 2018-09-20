@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Spinner } from "native-base";
-import { rnFill, rnSetPosition } from "./utils";
+import { rnFill, rnSetPosition } from "../tools";
 
 class LoadingScreen extends Component {
   constructor(props) {
@@ -10,9 +10,8 @@ class LoadingScreen extends Component {
 
   render() {
     return (
-      <View style={{ ...rnFill, ...rnSetPosition }}>
+      <View style={{ ...rnFill, ...rnSetPosition() }}>
         <Spinner size={60} />
-        <Text> loading... </Text>
       </View>
     );
   }
