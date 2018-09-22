@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-import { View, Text } from "native-base";
+import { Container } from "native-base";
+import MainHeader from "../components/commons/MainHeader";
 
 class Events extends Component {
   state = {};
@@ -9,9 +10,9 @@ class Events extends Component {
     const {} = style;
 
     return (
-      <View>
-        <Text> Events </Text>
-      </View>
+      <Container>
+        <MainHeader title="Events" />
+      </Container>
     );
   }
 }

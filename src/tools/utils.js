@@ -192,5 +192,15 @@ const rnFill = {
   ...rnSquare(),
   flex: 1
 };
-
-export { rnSquare, rnFill, rnSetPosition, rnSetPadding, rnSetMargin };
+const rnNoSpace = {
+  ...rnSetPadding(),
+  ...rnSetMargin()
+};
+export {
+  rnNoSpace,
+  rnSquare,
+  rnFill,
+  rnSetPosition,
+  rnSetPadding,
+  rnSetMargin
+};

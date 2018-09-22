@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 import { View, Text } from "native-base";
 
-class WishList extends Component {
+class Account extends Component {
   state = {};
 
   render() {
@@ -10,12 +10,12 @@ class WishList extends Component {
 
     return (
       <View>
-        <Text> WishList </Text>
+        <Text> Account </Text>
       </View>
     );
   }
 }
 
-export default WishList;
+export default Account;
 
 const style = StyleSheet.create({});

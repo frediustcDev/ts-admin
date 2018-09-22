@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-import { View, Text, Container } from "native-base";
+import { Container } from "native-base";
 import MainHeader from "../components/commons/MainHeader";
 
-class Home extends Component {
+class Settings extends Component {
   state = {};
 
   render() {
@@ -11,12 +11,12 @@ class Home extends Component {
 
     return (
       <Container>
-        <MainHeader title="Home" />
+        <MainHeader title="Settings" />
       </Container>
     );
   }
 }
 
-export default Home;
+export default Settings;
 
 const style = StyleSheet.create({});

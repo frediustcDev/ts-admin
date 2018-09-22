@@ -1,15 +1,112 @@
 //in App route accessed after login/registration
-import { createBottomTabNavigator } from "react-navigation";
+import React from "react";
+import {
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
+import { bgColor, textColor, linkActive, bgLight } from "../tools";
 import Home from "../screens/Home";
 import Cart from "../screens/Cart";
 import Events from "../screens/Events";
-import WishList from "../screens/WishList";
+import EventDetail from "../screens/EventDetail";
+import Favorite from "../screens/Favorite";
+import Search from "../screens/Search";
+import Account from "../screens/Account";
+import Settings from "../screens/Settings";
+import { Icon } from "native-base";
 
-const route = createBottomTabNavigator({
-  home: Home,
-  cart: Cart,
-  events: Events,
-  wishlist: WishList
+const tabRoute = createBottomTabNavigator(
+  {
+    home: {
+      screen: Home,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon
+            type="Feather"
+            name="home"
+            style={{ color: tintColor, fontSize: 20 }}
+          />
+        )
+      }
+    },
+    events: {
+      screen: Events,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon
+            type="Feather"
+            name="list"
+            style={{ color: tintColor, fontSize: 20 }}
+          />
+        )
+      }
+    },
+    cart: {
+      screen: Cart,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon
+            type="Feather"
+            name="shopping-cart"
+            style={{ color: tintColor, fontSize: 20 }}
+          />
+        )
+      }
+    },
+    favorite: {
+      screen: Favorite,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon
+            type="Feather"
+            name="heart"
+            style={{ color: tintColor, fontSize: 20 }}
+          />
+        )
+      }
+    },
+    settings: {
+      screen: Settings,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon
+            type="Feather"
+            name="settings"
+            style={{ color: tintColor, fontSize: 20 }}
+          />
+        )
+      }
+    }
+  },
+  {
+    tabBarOptions: {
+      initialRouteName: "home",
+      activeTintColor: linkActive,
+      inactiveTintColor: textColor,
+      showLabel: false,
+      style: {
+        borderTopColor: bgLight,
+        backgroundColor: bgColor
+      }
+    }
+  }
+);
+
+const route = createStackNavigator({
+  tab: {
+    screen: tabRoute,
+    navigationOptions: {
+      header: null
+    }
+  },
+  eventDetail: {
+    screen: EventDetail,
+    navigationOptions: {
+      header: null
+    }
+  },
+  search: Search,
+  account: Account
 });
 
 export default route;
