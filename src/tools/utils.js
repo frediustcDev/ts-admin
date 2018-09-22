@@ -4,6 +4,8 @@ const rnSquare = (args = null) => ({
   width: args,
   height: args
 });
+
+//position element
 const rnSetPosition = (pos = "center", axis = "column", node = "children") => {
   const n = node ? node : "children";
   const nodes = {
@@ -110,10 +112,85 @@ const rnSetPosition = (pos = "center", axis = "column", node = "children") => {
   };
 };
 
+const rnSetPadding = (pad = null, direction = "both") => {
+  // vertical padding
+  const vertical = {
+    paddingBottom: pad,
+    paddingTop: pad,
+    paddingVertical: pad
+  };
+
+  //horizontal padding
+  const horizontal = {
+    paddingLeft: pad,
+    paddingRight: pad,
+    paddingHorizontal: pad,
+
+    paddingEnd: pad,
+    paddingStart: pad
+  };
+
+  //apply base on direction
+  switch (direction) {
+    case "vertical":
+      return {
+        ...vertical
+      };
+    case "horizontal":
+      return {
+        ...horizontal
+      };
+    default:
+      return {
+        padding: pad,
+        ...vertical,
+        ...horizontal
+      };
+  }
+};
+
+//SET MARGIN
+const rnSetMargin = (mar = null, direction = "both") => {
+  // vertical margin
+  const vertical = {
+    marginBottom: mar,
+    marginTop: mar,
+    marginVertical: mar
+  };
+
+  //horizontal margin
+  const horizontal = {
+    marginLeft: mar,
+    marginRight: mar,
+    marginHorizontal: mar,
+
+    marginEnd: mar,
+    marginStart: mar
+  };
+
+  //apply base on direction
+  switch (direction) {
+    case "vertical":
+      return {
+        ...vertical
+      };
+    case "horizontal":
+      return {
+        ...horizontal
+      };
+    default:
+      return {
+        margin: mar,
+        ...vertical,
+        ...horizontal
+      };
+  }
+};
+
 //static
 const rnFill = {
   ...rnSquare(),
   flex: 1
 };
 
-export { rnSquare, rnFill, rnSetPosition };
+export { rnSquare, rnFill, rnSetPosition, rnSetPadding, rnSetMargin };

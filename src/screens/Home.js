@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-import { View, Text } from "native-base";
+import { View, Text, Container } from "native-base";
+import MainHeader from "../components/commons/MainHeader";
 
 class Home extends Component {
   state = {};
@@ -9,9 +10,9 @@ class Home extends Component {
     const {} = style;
 
     return (
-      <View>
-        <Text> Home </Text>
-      </View>
+      <Container>
+        <MainHeader />
+      </Container>
     );
   }
 }
