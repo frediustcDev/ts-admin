@@ -6,6 +6,7 @@ const textDark = "#282828";
 const textDarker = "#161616";
 const primaryColor = "#3C73EA";
 const linkActive = primaryColor;
+export const STAR_COLOR = "#F5D157";
 
 export {
   bgColor,

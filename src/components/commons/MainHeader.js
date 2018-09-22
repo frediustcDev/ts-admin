@@ -10,7 +10,10 @@ import {
   textDark,
   textColor,
   rnNoSpace,
-  primaryColor
+  primaryColor,
+  rnSetPadding,
+  BASE_SPACE,
+  HEADER_BTN
 } from "../../tools";
 
 const Btn = ({ press, name, type }) => (
@@ -18,8 +21,8 @@ const Btn = ({ press, name, type }) => (
     onPress={press}
     style={{
       ...rnNoSpace,
-      ...rnSquare(40),
-      borderRadius: 40,
+      ...rnSquare(HEADER_BTN),
+      borderRadius: HEADER_BTN,
       overflow: "hidden"
     }}
     rippleColor={primaryColor}
@@ -31,7 +34,7 @@ const Btn = ({ press, name, type }) => (
       style={{
         backgroundColor: bgLight,
         elevation: 0,
-        ...rnSquare(40),
+        ...rnSquare(HEADER_BTN),
         ...rnSetPosition(),
         ...rnNoSpace
       }}
@@ -54,7 +57,13 @@ class MainHeader extends Component {
 
   render() {
     return (
-      <Header transparent style={{ backgroundColor: bgColor }}>
+      <Header
+        transparent
+        style={{
+          backgroundColor: bgColor,
+          ...rnSetPadding(BASE_SPACE, "horizontal")
+        }}
+      >
         <Left>
           <Btn
             type="Feather"
@@ -63,9 +72,7 @@ class MainHeader extends Component {
           />
         </Left>
         <Body>
-          <Title
-            style={{ color: textDark, fontFamily: "ws_xBold", fontSize: 18 }}
-          >
+          <Title style={{ color: textDark, fontFamily: "ws" }}>
             {this.props.title || "Ticketing App"}
           </Title>
         </Body>
