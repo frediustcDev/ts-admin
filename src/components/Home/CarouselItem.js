@@ -11,7 +11,8 @@ import {
   textLight,
   linkActive,
   textColor,
-  rnSetPadding
+  rnSetPadding,
+  rnSetPosition
 } from "../../tools";
 
 const Star = ({ active }) => (
@@ -67,66 +68,21 @@ const CarouselItem = ({
   hour,
   color,
   basePrice,
-  rank
+  rank,
+  category
 }) => {
+  const { imageStyle, detailStyle, boxSeparatorStyle, titleStyle } = styles;
   return (
     <View style={{ ...rnSetPadding(BASE_SPACE, "horizontal") }}>
-      <View
-        style={{
-          ...rnFill,
-          height: 150,
-          backgroundColor: color,
-          borderRadius: 5,
-          elevation: 8,
-          marginBottom: 10
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: bgLight,
-          ...rnSetPadding(10),
-          borderRadius: 5
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: null,
-            flex: 1,
-            alignItems: "center"
-          }}
-        >
-          <H3
-            style={{
-              fontFamily: "ws_bold",
-              color: textDark,
-              marginBottom: TITLE_SPACE
-            }}
-          >
-            {name}
-          </H3>
-          <View
-            style={{
-              flexDirection: "row",
-              ...rnSetPadding(5),
-              backgroundColor: bgLight,
-              borderRadius: 2
-            }}
-          >
-            <StarList rank={rank} />
-          </View>
+      <View style={imageStyle} />
+      <View style={detailStyle}>
+        <View style={boxSeparatorStyle}>
+          <H3 style={titleStyle}>{name}</H3>
+          <StarList rank={rank} />
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: null,
-            flex: 1,
-            alignItems: "center"
-          }}
-        >
+        <View style={boxSeparatorStyle}>
           <View>
+            <DetailSection name="folder" title={`in ${category}`} />
             <DetailSection name="map-pin" title={location} />
             <DetailSection name="calendar" title={`${date} / ${hour}`} />
           </View>
@@ -150,5 +106,30 @@ const styles = StyleSheet.create({
   fromStyle: { fontFamily: "ws_light", color: textLight, fontSize: 12 },
   priceStyle: { fontFamily: "ws_sBold", color: linkActive, fontSize: 24 },
   detailIconStyle: { color: linkActive, marginRight: 5, fontSize: 12 },
-  detailTitleStyle: { fontFamily: "ws", color: textColor, fontSize: 12 }
+  detailTitleStyle: { fontFamily: "ws", color: textColor, fontSize: 12 },
+  imageStyle: {
+    ...rnFill,
+    height: 150,
+    backgroundColor: "red",
+    borderRadius: 5,
+    elevation: 8,
+    marginBottom: 10
+  },
+  detailStyle: {
+    backgroundColor: bgLight,
+    ...rnSetPadding(10),
+    borderRadius: 5
+  },
+  boxSeparatorStyle: {
+    flexDirection: "row",
+    width: null,
+    flex: 1,
+    ...rnSetPosition("top", "row"),
+    justifyContent: "space-between"
+  },
+  titleStyle: {
+    fontFamily: "ws_bold",
+    color: textDark,
+    marginBottom: TITLE_SPACE
+  }
 });

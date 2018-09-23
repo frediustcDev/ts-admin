@@ -1,19 +1,27 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import Carousel from "react-native-snap-carousel";
+// import { View, Text } from "native-base";
+import HomeSection from "./HomeSection";
+import CarouselItem from "./CarouselItem";
+import { SLIDER_WIDTH, SLIDER_ITEM_WIDTH } from "../../tools";
 
-class PopularEvents extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <View>
-        <Text> Popular Events</Text>
-      </View>
-    );
-  }
-}
+const PopularEvents = ({ data }) => {
+  return (
+    <HomeSection
+      title="Popular Events"
+      subtitle="Discover all the newest and hotest events around you and get your
+            ticket before all your friends."
+    >
+      <Carousel
+        data={data}
+        renderItem={({ item, index }) => <CarouselItem {...item} />}
+        sliderWidth={SLIDER_WIDTH}
+        itemWidth={SLIDER_ITEM_WIDTH}
+        autoplay
+        loop
+      />
+    </HomeSection>
+  );
+};
 
 export default PopularEvents;
