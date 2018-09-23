@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Image, TouchableOpacity } from "react-native";
 import { View, Text, H3, Icon } from "native-base";
 import {
   rnFill,
@@ -50,7 +50,7 @@ const StarList = ({ rank }) => {
     <View
       style={{
         flexDirection: "row",
-        ...rnSetPadding(5, "horizontal"),
+        ...rnSetPadding(5),
         backgroundColor: bgLight,
         borderRadius: 2
       }}
@@ -66,15 +66,20 @@ const CarouselItem = ({
   location,
   date,
   hour,
-  color,
   basePrice,
   rank,
-  category
+  category,
+  image
 }) => {
   const { imageStyle, detailStyle, boxSeparatorStyle, titleStyle } = styles;
   return (
-    <View style={{ ...rnSetPadding(BASE_SPACE, "horizontal") }}>
-      <View style={imageStyle} />
+    <TouchableOpacity
+      onPress={() => alert(`Clicked Event ID: ${id}`)}
+      style={{ ...rnSetPadding(BASE_SPACE, "horizontal") }}
+    >
+      <View style={imageStyle}>
+        <Image source={image} style={{ ...rnFill, resizeMode: "cover" }} />
+      </View>
       <View style={detailStyle}>
         <View style={boxSeparatorStyle}>
           <H3 style={titleStyle}>{name}</H3>
@@ -91,7 +96,7 @@ const CarouselItem = ({
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -105,18 +110,18 @@ const styles = StyleSheet.create({
   }),
   fromStyle: { fontFamily: "ws_light", color: textLight, fontSize: 12 },
   priceStyle: { fontFamily: "ws_sBold", color: linkActive, fontSize: 24 },
-  detailIconStyle: { color: linkActive, marginRight: 5, fontSize: 12 },
+  detailIconStyle: { color: textDark, marginRight: 5, fontSize: 12 },
   detailTitleStyle: { fontFamily: "ws", color: textColor, fontSize: 12 },
   imageStyle: {
     ...rnFill,
     height: 150,
-    backgroundColor: "red",
     borderRadius: 5,
-    elevation: 8,
-    marginBottom: 10
+    elevation: 10,
+    marginBottom: 10,
+    overflow: "hidden"
   },
   detailStyle: {
-    backgroundColor: bgLight,
+    // backgroundColor: bgLight,
     ...rnSetPadding(10),
     borderRadius: 5
   },
@@ -128,7 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   titleStyle: {
-    fontFamily: "ws_bold",
+    fontFamily: "ws_light",
     color: textDark,
     marginBottom: TITLE_SPACE
   }

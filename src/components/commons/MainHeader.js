@@ -61,7 +61,9 @@ class MainHeader extends Component {
         transparent
         style={{
           backgroundColor: bgColor,
-          ...rnSetPadding(BASE_SPACE, "horizontal")
+          ...rnSetPadding(BASE_SPACE, "horizontal"),
+          borderBottomWidth: 1,
+          borderBottomColor: bgLight
         }}
       >
         <Left>

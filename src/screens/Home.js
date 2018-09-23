@@ -16,43 +16,47 @@ import {
   STAR_COLOR,
   rnSetPosition,
   textDark,
-  bgLight
+  bgLight,
+  IMG_1,
+  IMG_2,
+  IMG_3
 } from "../tools";
 import HomeSection from "../components/Home/HomeSection";
 import PopularEvents from "../components/Home/PopularEvents";
+import Categories from "../components/Home/Categories";
 
 class Home extends Component {
   state = {
     data: [
       {
         id: "1",
+        image: IMG_1,
         name: "Concert DJ Arafat",
         location: "Abidjan",
         date: "21 Sept 2018",
         hour: "10:00",
-        color: "red",
         basePrice: 20,
         rank: 0.1,
         category: "Music"
       },
       {
         id: "2",
-        name: "Abidjan Mousse Saison 2",
+        image: IMG_2,
+        name: "Abidjan Mousse II",
         location: "Abidjan",
         date: "21 Sept 2018",
         hour: "10:00",
-        color: "green",
         basePrice: 30,
         rank: 3.6,
         category: "Party"
       },
       {
         id: "3",
+        image: IMG_3,
         name: "Festival des grillades",
         location: "Abidjan",
         date: "21 Sept 2018",
         hour: "10:00",
-        color: "blue",
         basePrice: 10,
         rank: 2,
         category: "Festival"
@@ -68,11 +72,22 @@ class Home extends Component {
       <Container>
         <MainHeader title="Discovery" />
         <Content
+          showsVerticalScrollIndicator={false}
           style={{
-            marginTop: BASE_SPACE
+            paddingTop: BASE_SPACE
           }}
         >
           <PopularEvents data={data} />
+          <Categories
+            categories={[
+              "Food",
+              "Festival",
+              "Music",
+              "Party",
+              "Religion",
+              "Art"
+            ]}
+          />
         </Content>
       </Container>
     );

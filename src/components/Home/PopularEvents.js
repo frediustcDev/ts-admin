@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import Carousel from "react-native-snap-carousel";
-// import { View, Text } from "native-base";
 import HomeSection from "./HomeSection";
 import CarouselItem from "./CarouselItem";
 import { SLIDER_WIDTH, SLIDER_ITEM_WIDTH } from "../../tools";
@@ -13,8 +12,9 @@ const PopularEvents = ({ data }) => {
             ticket before all your friends."
     >
       <Carousel
+        containerCustomStyle={{ marginBottom: 30 }}
         data={data}
-        renderItem={({ item, index }) => <CarouselItem {...item} />}
+        renderItem={({ item }) => <CarouselItem {...item} />}
         sliderWidth={SLIDER_WIDTH}
         itemWidth={SLIDER_ITEM_WIDTH}
         autoplay
