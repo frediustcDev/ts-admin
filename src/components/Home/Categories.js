@@ -27,7 +27,6 @@ const PopularEvents = ({ categories }) => {
         }}
       >
         {categories.map(cat => {
-          console.log(cat);
           return (
             <TouchableOpacity
               onPress={() => alert(cat)}

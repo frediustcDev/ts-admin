@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Spinner } from "native-base";
-import { rnFill, rnSetPosition } from "../tools";
+import { rnFill, rnSetPosition, primaryColor } from "../tools";
 
 class LoadingScreen extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class LoadingScreen extends Component {
   render() {
     return (
       <View style={{ ...rnFill, ...rnSetPosition() }}>
-        <Spinner size={60} />
+        <Spinner size={40} color={primaryColor} />
       </View>
     );
   }

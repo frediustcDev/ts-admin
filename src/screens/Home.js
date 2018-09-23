@@ -1,36 +1,19 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-import { Container, Content, Text, H1, H3, View, Icon } from "native-base";
-import Carousel from "react-native-snap-carousel";
+import { Container, Content } from "native-base";
 import MainHeader from "../components/commons/MainHeader";
-import {
-  rnSetPadding,
-  BASE_SPACE,
-  textLight,
-  TITLE_SPACE,
-  SLIDER_WIDTH,
-  SLIDER_ITEM_WIDTH,
-  rnFill,
-  linkActive,
-  textColor,
-  STAR_COLOR,
-  rnSetPosition,
-  textDark,
-  bgLight,
-  IMG_1,
-  IMG_2,
-  IMG_3
-} from "../tools";
-import HomeSection from "../components/Home/HomeSection";
+import { BASE_SPACE, IMG_4, IMG_1, IMG_3, rnSetPadding } from "../tools";
 import PopularEvents from "../components/Home/PopularEvents";
 import Categories from "../components/Home/Categories";
+import RecentEvents from "../components/Home/RecentEvents";
 
 class Home extends Component {
   state = {
+    categories: ["Food", "Festival", "Music", "Party", "Religion", "Art"],
     data: [
       {
         id: "1",
-        image: IMG_1,
+        image: IMG_4,
         name: "Concert DJ Arafat",
         location: "Abidjan",
         date: "21 Sept 2018",
@@ -41,7 +24,7 @@ class Home extends Component {
       },
       {
         id: "2",
-        image: IMG_2,
+        image: IMG_1,
         name: "Abidjan Mousse II",
         location: "Abidjan",
         date: "21 Sept 2018",
@@ -66,7 +49,7 @@ class Home extends Component {
 
   render() {
     const {} = style;
-    const { data } = this.state;
+    const { data, categories } = this.state;
 
     return (
       <Container>
@@ -74,20 +57,12 @@ class Home extends Component {
         <Content
           showsVerticalScrollIndicator={false}
           style={{
-            paddingTop: BASE_SPACE
+            ...rnSetPadding(BASE_SPACE, "vertical")
           }}
         >
           <PopularEvents data={data} />
-          <Categories
-            categories={[
-              "Food",
-              "Festival",
-              "Music",
-              "Party",
-              "Religion",
-              "Art"
-            ]}
-          />
+          <Categories categories={categories} />
+          <RecentEvents data={data} />
         </Content>
       </Container>
     );
