@@ -6,45 +6,12 @@ import { BASE_SPACE, IMG_4, IMG_1, IMG_3, rnSetPadding } from "../tools";
 import PopularEvents from "../components/Home/PopularEvents";
 import Categories from "../components/Home/Categories";
 import RecentEvents from "../components/Home/RecentEvents";
+import db from "../config/db";
 
 class Home extends Component {
   state = {
-    categories: ["Food", "Festival", "Music", "Party", "Religion", "Art"],
-    data: [
-      {
-        id: "1",
-        image: IMG_4,
-        name: "Concert DJ Arafat",
-        location: "Abidjan",
-        date: "21 Sept 2018",
-        hour: "10:00",
-        basePrice: 20,
-        rank: 0.1,
-        category: "Music"
-      },
-      {
-        id: "2",
-        image: IMG_1,
-        name: "Abidjan Mousse II",
-        location: "Abidjan",
-        date: "21 Sept 2018",
-        hour: "10:00",
-        basePrice: 30,
-        rank: 3.6,
-        category: "Party"
-      },
-      {
-        id: "3",
-        image: IMG_3,
-        name: "Festival des grillades",
-        location: "Abidjan",
-        date: "21 Sept 2018",
-        hour: "10:00",
-        basePrice: 10,
-        rank: 2,
-        category: "Festival"
-      }
-    ]
+    categories: [],
+    data: []
   };
 
   render() {
@@ -66,6 +33,10 @@ class Home extends Component {
         </Content>
       </Container>
     );
+  }
+
+  componentDidMount() {
+    this.setState({ data: db.data, categories: db.categories });
   }
 }
 

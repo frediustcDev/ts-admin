@@ -17,18 +17,6 @@ import { Icon } from "native-base";
 
 const tabRoute = createBottomTabNavigator(
   {
-    home: {
-      screen: Home,
-      navigationOptions: {
-        tabBarIcon: ({ focused, tintColor }) => (
-          <Icon
-            type="Feather"
-            name="home"
-            style={{ color: tintColor, fontSize: 20 }}
-          />
-        )
-      }
-    },
     events: {
       screen: Events,
       navigationOptions: {
@@ -36,6 +24,18 @@ const tabRoute = createBottomTabNavigator(
           <Icon
             type="Feather"
             name="list"
+            style={{ color: tintColor, fontSize: 20 }}
+          />
+        )
+      }
+    },
+    home: {
+      screen: Home,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon
+            type="Feather"
+            name="home"
             style={{ color: tintColor, fontSize: 20 }}
           />
         )
@@ -80,7 +80,7 @@ const tabRoute = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      initialRouteName: "home",
+      initialRouteName: "events",
       activeTintColor: linkActive,
       inactiveTintColor: textColor,
       showLabel: false,

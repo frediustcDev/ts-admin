@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Image, TouchableOpacity, StyleSheet } from "react-native";
-import { View, Text, H3 } from "native-base";
+import { Image, TouchableOpacity } from "react-native";
+import { View, H3 } from "native-base";
 import {
   BASE_SPACE,
   bgLight,
@@ -82,6 +82,15 @@ class EventCard extends Component {
           borderBottomWidth: 1
         }}
       >
+        <FastImage
+          source={{
+            uri: "https://unsplash.it/400/400?image=1",
+            headers: { Authorization: "someAuthToken" },
+            priority: FastImage.priority.normal
+          }}
+          resizeMode={FastImage.resizeMode.contain}
+          style={{ ...rnFill, borderRadius: 5 }}
+        />
         <View
           style={{
             ...rnSquare(100),

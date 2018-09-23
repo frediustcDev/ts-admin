@@ -52,42 +52,39 @@ const Btn = ({ press, name, type }) => (
   </Ripple>
 );
 
-class MainHeader extends Component {
-  state = {};
-
-  render() {
-    return (
-      <Header
-        transparent
-        style={{
-          backgroundColor: bgColor,
-          ...rnSetPadding(BASE_SPACE, "horizontal"),
-          borderBottomWidth: 1,
-          borderBottomColor: bgLight
-        }}
-      >
-        <Left>
-          <Btn
-            type="Feather"
-            name="user"
-            press={() => this.props.navigation.navigate("account")}
-          />
-        </Left>
-        <Body>
-          <Title style={{ color: textDark, fontFamily: "ws" }}>
-            {this.props.title || "Ticketing App"}
-          </Title>
-        </Body>
-        <Right>
-          <Btn
-            type="Feather"
-            name="search"
-            press={() => this.props.navigation.navigate("search")}
-          />
-        </Right>
-      </Header>
-    );
-  }
-}
+const MainHeader = ({ title, navigation, ...rest }) => {
+  return (
+    <Header
+      transparent
+      style={{
+        backgroundColor: bgColor,
+        ...rnSetPadding(BASE_SPACE, "horizontal"),
+        borderBottomWidth: 1,
+        borderBottomColor: bgLight
+      }}
+      {...rest}
+    >
+      <Left>
+        <Btn
+          type="Feather"
+          name="user"
+          press={() => navigation.navigate("account")}
+        />
+      </Left>
+      <Body>
+        <Title style={{ color: textDark, fontFamily: "ws" }}>
+          {title || "Ticketing App"}
+        </Title>
+      </Body>
+      <Right>
+        <Btn
+          type="Feather"
+          name="search"
+          press={() => navigation.navigate("search")}
+        />
+      </Right>
+    </Header>
+  );
+};
 
 export default withNavigation(MainHeader);
