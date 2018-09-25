@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Image, TouchableOpacity } from "react-native";
 import { View, H3 } from "native-base";
+import { withNavigation } from "react-navigation";
 import {
   BASE_SPACE,
   bgLight,
@@ -73,6 +74,7 @@ class EventCard extends Component {
     } = this.props.data;
     return this.state.loaded ? (
       <TouchableOpacity
+        onPress={() => this.props.navigation.navigate("eventDetail", { id })}
         style={{
           flexDirection: "row",
           marginBottom: BASE_SPACE,
@@ -82,15 +84,6 @@ class EventCard extends Component {
           borderBottomWidth: 1
         }}
       >
-        <FastImage
-          source={{
-            uri: "https://unsplash.it/400/400?image=1",
-            headers: { Authorization: "someAuthToken" },
-            priority: FastImage.priority.normal
-          }}
-          resizeMode={FastImage.resizeMode.contain}
-          style={{ ...rnFill, borderRadius: 5 }}
-        />
         <View
           style={{
             ...rnSquare(100),
@@ -127,4 +120,4 @@ class EventCard extends Component {
   }
 }
 
-export default EventCard;
+export default withNavigation(EventCard);

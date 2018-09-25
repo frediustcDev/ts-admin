@@ -1,17 +1,19 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-import { View, Text } from "native-base";
+import { Container, Content, Text, Footer, Button } from "native-base";
 
 class EventDetail extends Component {
   state = {};
 
   render() {
     const {} = style;
-
+    console.log(this.props.navigation.getParam("id", "undefined"));
     return (
-      <View>
-        <Text> EventDetail </Text>
-      </View>
+      <Container>
+        <Content>
+          <Text> EventDetail </Text>
+        </Content>
+      </Container>
     );
   }
 }

@@ -16,27 +16,30 @@ import {
   HEADER_BTN
 } from "../../tools";
 
-const Btn = ({ press, name, type }) => (
+const Btn = ({ press, name, type, btnStyle }) => (
   <Ripple
     onPress={press}
     style={{
       ...rnNoSpace,
-      ...rnSquare(HEADER_BTN),
+      // ...rnSquare(HEADER_BTN),
       borderRadius: HEADER_BTN,
       overflow: "hidden"
     }}
     rippleColor={primaryColor}
-    rippleOpacity={0.5}
+    rippleOpacity={0.3}
+    rippleDuration={250}
+    rippleCentered
   >
     <Button
       transparent
       rounded
       style={{
-        backgroundColor: bgLight,
+        // backgroundColor: bgLight,
         elevation: 0,
         ...rnSquare(HEADER_BTN),
         ...rnSetPosition(),
-        ...rnNoSpace
+        ...rnNoSpace,
+        ...btnStyle
       }}
     >
       <Icon
@@ -68,6 +71,7 @@ const MainHeader = ({ title, navigation, ...rest }) => {
         <Btn
           type="Feather"
           name="user"
+          btnStyle={{ backgroundColor: bgLight }}
           press={() => navigation.navigate("account")}
         />
       </Left>
@@ -81,6 +85,11 @@ const MainHeader = ({ title, navigation, ...rest }) => {
           type="Feather"
           name="search"
           press={() => navigation.navigate("search")}
+        />
+        <Btn
+          type="Feather"
+          name="plus"
+          press={() => navigation.navigate("add")}
         />
       </Right>
     </Header>

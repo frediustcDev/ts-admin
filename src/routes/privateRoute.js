@@ -8,6 +8,7 @@ import { bgColor, textColor, linkActive, bgLight } from "../tools";
 import Home from "../screens/Home";
 import Cart from "../screens/Cart";
 import Events from "../screens/Events";
+import AddEvent from "../screens/AddEvent";
 import EventDetail from "../screens/EventDetail";
 import Favorite from "../screens/Favorite";
 import Search from "../screens/Search";
@@ -17,18 +18,6 @@ import { Icon } from "native-base";
 
 const tabRoute = createBottomTabNavigator(
   {
-    events: {
-      screen: Events,
-      navigationOptions: {
-        tabBarIcon: ({ focused, tintColor }) => (
-          <Icon
-            type="Feather"
-            name="list"
-            style={{ color: tintColor, fontSize: 20 }}
-          />
-        )
-      }
-    },
     home: {
       screen: Home,
       navigationOptions: {
@@ -41,6 +30,19 @@ const tabRoute = createBottomTabNavigator(
         )
       }
     },
+    events: {
+      screen: Events,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon
+            type="Feather"
+            name="list"
+            style={{ color: tintColor, fontSize: 20 }}
+          />
+        )
+      }
+    },
+
     cart: {
       screen: Cart,
       navigationOptions: {
@@ -99,6 +101,7 @@ const route = createStackNavigator({
       header: null
     }
   },
+  add: AddEvent,
   eventDetail: {
     screen: EventDetail,
     navigationOptions: {
