@@ -34,8 +34,9 @@ class Events extends Component {
   }
 
   _renderTab = ar => {
-    ar.unshift("All");
-    return ar.map(e => (
+    const newAr = [...ar];
+    newAr.unshift("All");
+    return newAr.map(e => (
       <Tab
         heading={e.toUpperCase()}
         key={e}
