@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import {
@@ -38,16 +38,16 @@ import FormField from "../components/commons/FormField";
 
 class AddEvent extends Component {
   state = {};
-
+componentDidMount(){
+  const 
+}
   render() {
     const {} = styles;
 
     return (
       <Container>
         <Content
-          contentContainerStyle={{
-            ...rnSetPadding(BASE_SPACE, "horizontal")
-          }}
+          contentContainerStyle={{ ...rnSetPadding(BASE_SPACE, "horizontal") }}
         >
           <KeyboardAwareScrollView>
             <Form>
@@ -58,7 +58,11 @@ class AddEvent extends Component {
               <FormField label="Event Prices" container>
                 <Grid style={{ ...rnFill }}>
                   <Col>
-                    <FormField placeholder="Ticket Type" />
+                    <FormField
+                      placeholder="Ticket Type"
+                      picker
+                      data={db.ticketType}
+                    />
                   </Col>
                   <Col>
                     <FormField
@@ -68,6 +72,7 @@ class AddEvent extends Component {
                   </Col>
                   <Col style={{ width: 45 }}>
                     <Button
+                      onPress={() => alert("clicked btn")}
                       style={{ marginTop: 10 }}
                       transparent
                       rounded
@@ -83,7 +88,13 @@ class AddEvent extends Component {
                   </Col>
                 </Grid>
               </FormField>
-              <Button style={{ marginBottom: BASE_SPACE }} full bordered info>
+              <Button
+                onPress={() => alert("clicked btn")}
+                style={{ marginBottom: BASE_SPACE }}
+                full
+                bordered
+                info
+              >
                 <Icon name="plus" type="Feather" fontSize={14} />
                 <Text>Add Price</Text>
               </Button>

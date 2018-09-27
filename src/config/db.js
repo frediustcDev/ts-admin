@@ -1,6 +1,14 @@
 import { IMG_1, IMG_2, IMG_3, IMG_4 } from "../tools";
 
 const db = {
+  ticketType: [
+    "Regular I",
+    "Regular II",
+    "Regular III",
+    "VIP I",
+    "VIP II",
+    "VIP III"
+  ],
   categories: ["Food", "Festival", "Music", "Party", "Religion", "Art"],
   data: [
     {
