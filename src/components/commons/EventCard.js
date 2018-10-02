@@ -9,7 +9,8 @@ import {
   rnSetMargin,
   rnFill,
   textDark,
-  TITLE_SPACE
+  TITLE_SPACE,
+  IMG_1
 } from "../../tools";
 import CardDetail from "./CardDetail";
 import StarList from "./StarList";
@@ -70,7 +71,7 @@ class EventCard extends Component {
       hour,
       rank,
       category,
-      image
+      img
     } = this.props.data;
     return this.state.loaded ? (
       <TouchableOpacity
@@ -94,7 +95,7 @@ class EventCard extends Component {
           }}
         >
           <Image
-            source={image}
+            source={{ uri: img.uri }}
             style={{ ...rnFill, resizeMode: "cover", borderRadius: 5 }}
           />
         </View>

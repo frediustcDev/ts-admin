@@ -22,9 +22,9 @@ import {
   bgLight,
   rnFill
 } from "../tools";
-import db from "../config/db";
+import database from "../config/db";
 import FormField from "../components/commons/FormField";
-import { storage, firestore } from "../config/base";
+import { storage, db } from "../config/base";
 
 class AddEvent extends Component {
   state = {
@@ -39,6 +39,10 @@ class AddEvent extends Component {
         label: "Event Name",
         placeholder: "My awesome event"
       },
+      location: {
+        label: "Event Location",
+        placeholder: "My event location"
+      },
       description: {
         type: "textarea",
         label: "Event Description"
@@ -46,7 +50,7 @@ class AddEvent extends Component {
       category: {
         type: "picker",
         label: "Event Category",
-        data: db.categories
+        data: database.categories
       },
       price: {
         type: "container",
@@ -57,7 +61,7 @@ class AddEvent extends Component {
               {
                 type: "picker",
                 placeholder: "Ticket Type",
-                data: db.ticketType
+                data: database.ticketType
               },
               {
                 type: "text",
@@ -154,8 +158,7 @@ class AddEvent extends Component {
       this._uploadImg(cover.uri, name)
         .then(p => {
           p.ref.getDownloadURL().then(uri => {
-            firestore
-              .collection("events")
+            db.collection("events")
               .add({
                 ...data,
                 createdAt: new Date(),

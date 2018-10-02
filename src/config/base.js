@@ -11,13 +11,13 @@ firebase.initializeApp({
 });
 
 //DATABASE
-const firestore = firebase.firestore();
+const db = firebase.firestore();
 
 // Disable deprecated features
-firestore.settings({
+db.settings({
   timestampsInSnapshots: true
 });
 
 //Storage
 const storage = firebase.storage();
-export { storage, firestore };
+export { storage, db };

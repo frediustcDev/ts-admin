@@ -105,7 +105,7 @@ const route = createStackNavigator({
   eventDetail: {
     screen: EventDetail,
     navigationOptions: {
-      header: null
+      title: "Event Detail"
     }
   },
   search: Search,

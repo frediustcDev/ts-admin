@@ -1,16 +1,13 @@
 import React from "react";
 import { StyleSheet, Image, TouchableOpacity } from "react-native";
-import { View, Text, H3, Icon } from "native-base";
+import { View, Text, H3 } from "native-base";
 import {
   rnFill,
   TITLE_SPACE,
   BASE_SPACE,
-  STAR_COLOR,
   textDark,
-  bgLight,
   textLight,
   linkActive,
-  textColor,
   rnSetPadding,
   rnSetPosition
 } from "../../tools";
@@ -33,7 +30,7 @@ const CarouselItem = ({
   basePrice,
   rank,
   category,
-  image
+  img
 }) => {
   const { imageStyle, detailStyle, boxSeparatorStyle, titleStyle } = styles;
   return (
@@ -42,7 +39,10 @@ const CarouselItem = ({
       style={{ ...rnSetPadding(BASE_SPACE, "horizontal") }}
     >
       <View style={imageStyle}>
-        <Image source={image} style={{ ...rnFill, resizeMode: "cover" }} />
+        <Image
+          source={{ uri: img.uri }}
+          style={{ ...rnFill, resizeMode: "cover" }}
+        />
       </View>
       <View style={detailStyle}>
         <View style={boxSeparatorStyle}>
