@@ -1,20 +1,23 @@
 import firebase from "firebase";
+require("firebase/firestore");
 
-const app = firebase.initializeApp({
-  apiKey: process.env.REACT_NATIVE_GOOGLE_API_KEY,
-  authDomain: process.env.REACT_NATIVE_GOOGLE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_NATIVE_GOOGLE_DATABASE_URL,
-  projectId: process.env.REACT_NATIVE_GOOGLE_PROJECT_ID,
-  storageBucket: process.env.REACT_NATIVE_GOOGLE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_NATIVE_GOOGLE_MESSAGING_SENDER_ID
+firebase.initializeApp({
+  apiKey: "AIzaSyB96JwsoCteXpowXRudmKhk2peObsIa3OE",
+  authDomain: "ts-final.firebaseapp.com",
+  databaseURL: "https://ts-final.firebaseio.com",
+  projectId: "ts-final",
+  storageBucket: "ts-final.appspot.com",
+  messagingSenderId: "1022519776592"
 });
 
 //DATABASE
-const db = app.firestore();
+const firestore = firebase.firestore();
 
 // Disable deprecated features
-db.settings({
+firestore.settings({
   timestampsInSnapshots: true
 });
 
-export { db };
+//Storage
+const storage = firebase.storage();
+export { storage, firestore };

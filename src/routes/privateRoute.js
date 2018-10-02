@@ -95,14 +95,13 @@ const tabRoute = createBottomTabNavigator(
 );
 
 const route = createStackNavigator({
-  add: AddEvent,
   tab: {
     screen: tabRoute,
     navigationOptions: {
       header: null
     }
   },
-
+  add: AddEvent,
   eventDetail: {
     screen: EventDetail,
     navigationOptions: {
