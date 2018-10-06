@@ -21,12 +21,10 @@ class Home extends Component {
       .orderBy("createdAt", "desc")
       .get()
       .then(docs => {
-        console.log("start");
         const data = [];
         docs.forEach(doc => {
           data.push({ id: doc.id, ...doc.data() });
         });
-        console.log(data);
 
         this.setState({ isReady: true, data }, () => {
           console.log("done");

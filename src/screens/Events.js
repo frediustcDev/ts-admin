@@ -3,33 +3,38 @@ import { StyleSheet } from "react-native";
 import { Container, Content, Tab, Tabs, ScrollableTab } from "native-base";
 import MainHeader from "../components/commons/MainHeader";
 import { primaryColor, bgLight, textColor } from "../tools";
-import db from "../config/db";
 import EventCard from "../components/commons/EventCard";
 import LoadingScreen from "../components/LoadingScreen";
+import { db } from "../config/base";
 
 class Events extends Component {
   state = {
-    categories: [],
+    categories: ["Food", "Festival", "Music", "Party", "Religion", "Art"],
     data: [],
-    loaded: false
+    isReady: false
   };
 
   render() {
     const {} = style;
 
     return (
-      <Container>
-        <MainHeader title="Events" hasTabs />
-        <Content>
-          <Tabs
-            renderTabBar={() => <ScrollableTab />}
-            tabBarUnderlineStyle={{ backgroundColor: primaryColor, height: 2 }}
-            style={{ borderBottomColor: "red" }}
-          >
-            {this._renderTab(this.state.categories)}
-          </Tabs>
-        </Content>
-      </Container>
+      this.state.isReady && (
+        <Container>
+          <MainHeader title="Events" hasTabs />
+          <Content>
+            <Tabs
+              renderTabBar={() => <ScrollableTab />}
+              tabBarUnderlineStyle={{
+                backgroundColor: primaryColor,
+                height: 2
+              }}
+              style={{ borderBottomColor: "red" }}
+            >
+              {this._renderTab(this.state.categories)}
+            </Tabs>
+          </Content>
+        </Container>
+      )
     );
   }
 
@@ -62,8 +67,22 @@ class Events extends Component {
     ));
   };
 
-  componentDidMount() {
-    this.setState({ data: db.data, categories: db.categories });
+  async componentDidMount() {
+    await db
+      .collection("events")
+      .orderBy("createdAt", "desc")
+      .get()
+      .then(docs => {
+        const data = [];
+        docs.forEach(doc => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+
+        this.setState({ isReady: true, data }, () => {
+          console.log("done");
+        });
+      })
+      .catch(() => {});
   }
 }
 
